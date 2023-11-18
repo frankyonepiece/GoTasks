@@ -24,7 +24,7 @@ request.interceptors.request.use(request => {
 request.interceptors.response.use(response => {
   return response;
 }, error => {
-  if (error.response.status == 401) {
+  if (error.response.status == 401 || error.response.status == 403) {
     store.dispatch('LogOut')
   }
   if (error.response.status === 422 && error.response.data?.errors) {
